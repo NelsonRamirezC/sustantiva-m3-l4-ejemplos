@@ -24,14 +24,12 @@ function calcular_IVA(valor, opcion = "NETO"){
 
 };
 
-
-function procesar_precios(listaPrecios, opcion = "NETO"){
-    
-    opcion = opcion.toUpperCase();
-
-    return listaPrecios.map((precio) => calcular_IVA(precio, opcion));
-};
-
 console.log("Precios base:", precioProductos);
-console.log("Precios BRUTO:", procesar_precios(precioProductos, "NETO"));
-console.log("Precios NETO:", procesar_precios(precioProductos, "BRUTO"));
+
+let preciosBruto = precioProductos.map((precio) => calcular_IVA(precio, "NETO"));
+
+console.log("Precios BRUTO:", preciosBruto);
+
+let preciosNeto = precioProductos.map((precio) => calcular_IVA(precio, "BRUTO"));
+
+console.log("Precios NETO:", preciosNeto);
